@@ -238,7 +238,7 @@
       var iframe = document.getElementById('video');
       // Update the iframe src to enable sound
       iframe.src = iframe.src.replace('&mute=1', '&mute=0');
-      closeOverlay();
+      document.getElementById('soundOverlay').style.display = 'none';
     }
 
     function closeOverlay() {
