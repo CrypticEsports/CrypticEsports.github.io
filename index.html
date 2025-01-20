@@ -73,7 +73,7 @@ body, html {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.6); /* Dimming effect */
+  background: rgba(0, 0, 0, 0.4); /* Dimming effect */
   z-index: 1;
 }
 
@@ -88,7 +88,6 @@ body, html {
   z-index: 0;
 }
 
-/* Adjust for landscape mode where width exceeds height */
 @media (min-aspect-ratio: 16/9) {
   .video-wrapper iframe {
     width: 100vw;
@@ -96,10 +95,9 @@ body, html {
   }
 }
 
-/* Additional adjustment for very small screens */
 @media (max-width: 990px) {
   .parallax_top {
-    height: 45vh; /* Reduce height to 50% of original (90vh -> 45vh) */
+    height: 45vh; /* Reduce height for smaller screens */
   }
 
   .video-wrapper {
@@ -107,12 +105,11 @@ body, html {
   }
 
   .video-wrapper iframe {
-    transform: translate(-50%, -50%) scale(1); /* Ensure scaling remains appropriate */
     width: 177.78vh; /* Default aspect ratio scaling based on reduced height */
   }
 
   #soundOverlay {
-    font-size: 1.3rem; /* Slightly smaller text for tablets */
+    font-size: 1.3rem; /* Smaller text for tablets */
   }
 
   .close-overlay {
@@ -158,9 +155,6 @@ body, html {
 }
 
 .img-hor-vert {
-  -moz-transform: scale(-1, -1);
-  -o-transform: scale(-1, -1);
-  -webkit-transform: scale(-1, -1);
   transform: scale(-1, -1);
 }
 
@@ -183,7 +177,7 @@ div.horizontalgap {
 }
 
 #soundOverlay {
-  position: fixed; /* Use fixed positioning to keep it on top */
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
@@ -193,8 +187,8 @@ div.horizontalgap {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem; /* Default font size */
-  z-index: 9999; /* High z-index to make sure it’s on top of other content */
+  font-size: 1.5rem;
+  z-index: 9999;
   text-align: center;
 }
 
@@ -214,9 +208,11 @@ div.horizontalgap {
 
 .team_member {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Automatically adjust columns */
   gap: 20px;
-  margin-top: 40px;
+  margin-top: 120px;
+  width: 80%;
+
 }
 
 .member_box {
@@ -246,66 +242,15 @@ h3 span {
   color: #4b0b79;
 }
 
-@media (max-width: 768px) {
-  .team_member {
-    grid-template-columns: 1fr 1fr; /* Two columns for mobile devices */
-  }
-
-  .member_box h4 {
-    font-size: 1.1rem;
-  }
-
-  .member_box p {
-    font-size: 0.9rem;
-  }
-
-  h3 {
-    font-size: 1.6rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .team_member {
-    grid-template-columns: 1fr; /* One column for very small screens */
-  }
-
-  h3 {
-    font-size: 1.6rem;
-  }
-}
-
 .game_section {
-  margin-bottom: 40px;
-  background-image: url('cm.jpg');
-  padding: 20px;
-}
-
-.game_section img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.game_name {
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-align: center;
-  margin-bottom: 20px;
-}
-.game_section {
+  min-height: 500px;
   margin-bottom: 40px;
   position: relative;
-  padding: 20px;
-}
-
-.game_section {
-  margin-bottom: 40px;
-  position: relative;
-  padding: 20px;
-  border-radius: 24px; /* Round the corners */
+  padding: 10px;
+  border-radius: 24px;
   border: 3px solid #4f0c7e; /* Purple border */
   box-shadow: 0 0 10px #330951; /* Purple glow effect */
-  transition: box-shadow 0.3s ease-in-out; /* Smooth transition for glow effect */
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 .game_section:hover {
@@ -324,9 +269,9 @@ h3 span {
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 24px; /* Round the corners */
+  border-radius: 24px;
   background: rgba(0, 0, 0, 0.85); /* Dimming effect */
-  z-index: 1; /* Overlay stays behind the text */
+  z-index: 1;
 }
 
 .text-overlay {
@@ -339,7 +284,7 @@ h3 span {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 2; /* Text stays above the overlay */
+  z-index: 2;
   color: white;
   text-align: center;
 }
@@ -347,37 +292,72 @@ h3 span {
 .game_name {
   font-size: 2rem;
   font-weight: bold;
-  margin: 20px 0; /* Add margin for spacing */
+  margin: 20px 0;
   position: absolute;
-  top: 20px; /* Align the title to the top */
+  top: 20px;
   left: 50%;
   transform: translateX(-50%);
 }
 
-.team_member {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columns */
-  gap: 20px;
-  margin-top: 60px; /* Ensure there's some space between the title and the members */
-  z-index: 3; /* Ensures members are on top of the dimming overlay */
+@media (max-width: 768px) {
+  h3 {
+    font-size: 2.5rem; /* Adjust header size */
+  }
+
+  .game_name {
+    font-size: 1.5rem; /* Adjust game name size */
+    margin: 10px 0;
+    top: 10px;
+  }
+
+  .member_box h4 {
+    font-size: 1.0rem;
+  }
+  .member_box p {
+    font-size: 0.8rem;
+  }
+  .game_section {
+  min-height: 500px;
+  }
+  .team_member {
+  grid-template-columns: repeat(auto-fill, min(80px, 1fr));
+  gap: 10px;
+  margin-top: 50px;
+  }
 }
 
-.member_box {
-  text-align: center;
+@media (max-width: 500px) {
+  h3 {
+    font-size: 1.6rem; /* Adjust header size */
+  }
+
+  .game_name {
+    font-size: 1.2rem; /* Adjust game name size */
+    margin: 5px 0;
+    top: 5px;
+  }
+  .game_section {
+  min-height: 300px;
+  }
+  .member_box h4 {
+    font-size: 0.7rem;
+  }
+  .member_box p {
+    font-size: 0.6rem;
+  }
+  .team_member {
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 5px;
+  margin-top: 40px;
+  }
 }
-
-.member_box h4 {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin-bottom: 5px;
+@media (max-width: 440px) {
+  .team_member {
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 5px;
+  margin-top: 40px;
+  }
 }
-
-.member_box p {
-  font-size: 1rem;
-  color: #555;
-}
-
-
 </style>
 
 </head>
@@ -401,7 +381,7 @@ h3 span {
                 <a class="nav-link" href="#about-us"> About Us</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#roster">Roster</a>
+                <a class="nav-link" href="#about-us">Roster</a>
               </li>
             </ul>
           </div>
@@ -472,82 +452,115 @@ h3 span {
     </div>
   </section>
   <div class="parallax_bottom">
-    <img src="images/title.png" alt="" class="responsive ">
-    <div class="play_roster_section" id="roster">
+<img src="images/title.png" alt="Title Image" class="responsive">
+<div class="play_roster_section">
   <h3>Competitive <span>Roster</span></h3>
-      <div class="horizontalgap"></div>
+  <div class="horizontalgap"></div>
 
   <!-- Game 1 Section -->
   <div class="container">
-    <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-10">
-<div class="game_section">
-  <div class="overlay"></div>
-  <img src="images/cm.jpg" alt="Title Image">
-  <div class="text-overlay">
-    <div class="game_name">Combat Master</div>
-    <div class="team_member">
-      <div class="member_box">
-        <h4>AG_Beam</h4>
-        <p style="color: #a00;">Captain</p>
-      </div>
-      <div class="member_box">
-        <h4>Member 2</h4>
-        <p>Role</p>
-      </div>
-      <div class="member_box">
-        <h4>Member 3</h4>
-        <p>Role</p>
-      </div>
-      <div class="member_box">
-        <h4>Member 4</h4>
-        <p>Role</p>
-      </div>
-      <div class="member_box">
-        <h4>Member 5</h4>
-        <p>Role</p>
-      </div>
-      <div class="member_box">
-        <h4>Member 6</h4>
-        <p>Role</p>
-      </div>
-    </div>
-  </div>
-</div>
+    <div class="row justify-content-center">
+      <div class="col-md-12">
         <div class="game_section">
-  <div class="overlay"></div>
-  <img src="images/bs.jpg" alt="Title Image">
-  <div class="text-overlay">
-    <div class="game_name">Bloodstrike</div>
-    <div class="team_member">
-      <div class="member_box">
-        <h4>AG_Beam</h4>
-        <p style="color: #a00;">Captain</p>
-      </div>
-      <div class="member_box">
-        <h4>Member 2</h4>
-        <p>Role</p>
-      </div>
-      <div class="member_box">
-        <h4>Member 3</h4>
-        <p>Role</p>
-      </div>
-      <div class="member_box">
-        <h4>Member 4</h4>
-        <p>Role</p>
-      </div>
-      <div class="member_box">
-        <h4>Member 5</h4>
-        <p>Role</p>
-      </div>
-      <div class="member_box">
-        <h4>Member 6</h4>
-        <p>Role</p>
+          <div class="overlay"></div>
+          <img src="images/cm.jpg" alt="Combat Master Image">
+          <div class="text-overlay">
+            <div class="game_name">Combat Master</div>
+            <div class="team_member">
+              <div class="member_box">
+                <h4>AG_Beam</h4>
+                <p style="color: #a00;">Captain</p>
+              </div>
+              <div class="member_box">
+                <h4>MokaiY</h4>
+                <p style="color: #00a;">Leader</p>
+              </div>
+              <div class="member_box">
+                <h4>k1ngkappa</h4>
+                <p style="color: #00a;">Leader</p>
+              </div>
+              <div class="member_box">
+                <h4>Hevy</h4>
+                <p style="color: #00a;">Leader</p>
+              </div>
+              <div class="member_box">
+                <h4>LexA</h4>
+                <p style="color: #00a;">Leader</p>
+              </div>
+              <div class="member_box">
+                <h4>Jakob</h4>
+                <p style="color: #619;">Player</p>
+              </div>
+              <div class="member_box">
+                <h4>Dragon</h4>
+                <p style="color: #619;">Player</p>
+              </div>
+              <div class="member_box">
+                <h4>Chipp</h4>
+                <p style="color: #619;">Player</p>
+              </div>
+              <div class="member_box">
+                <h4>Lunar</h4>
+                <p style="color: #619;">Player</p>
+              </div>
+              <div class="member_box">
+                <h4>Savage</h4>
+                <p style="color: #619;">Player</p>
+              </div>
+              <div class="member_box">
+                <h4>Tonk</h4>
+                <p style="color: #619;">Player</p>
+              </div>
+              <div class="member_box">
+                <h4>Rule</h4>
+                <p style="color: #619;">Player</p>
+              </div>
+              <div class="member_box">
+                <h4>Demon7</h4>
+                <p style="color: #619;">Player</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+  <!-- Game 2 Section -->
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <div class="game_section">
+          <div class="overlay"></div>
+          <img src="images/bs.jpg" alt="Another Game Image">
+          <div class="text-overlay">
+            <div class="game_name">Bloodstrike</div>
+            <div class="team_member">
+              <div class="member_box">
+                <h4>Nova</h4>
+                <p style="color: #a00;">Captain</p>
+              </div>
+              <div class="member_box">
+                <h4>AG_Beam</h4>
+                <p style="color: #00a;">Leader</p>
+              </div>
+              <div class="member_box">
+                <h4>Rat</h4>
+                <p style="color: #00a;">Leader</p>
+              </div>
+              <div class="member_box">
+                <h4>Kali</h4>
+                <p style="color: #619;">Player</p>
+              </div>
+              <div class="member_box">
+                <h4>Tonk</h4>
+                <p style="color: #619;">Player</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
 
     </div>
   </div>
