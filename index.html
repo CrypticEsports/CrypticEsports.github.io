@@ -97,11 +97,21 @@
 }
 
 /* Additional adjustment for very small screens */
-@media (max-width: 768px) {
+@media (max-width: 990px) {
+  .parallax_top {
+    height: 45vh; /* Reduce height to 50% of original (90vh -> 45vh) */
+  }
+
+  .video-wrapper {
+    height: 45vh; /* Match the reduced height */
+  }
+
   .video-wrapper iframe {
-    transform: translate(-50%, -50%) scale(1.05); /* Slight scaling for small screens */
+    transform: translate(-50%, -50%) scale(1); /* Ensure scaling remains appropriate */
+    width: 177.78vh; /* Default aspect ratio scaling based on reduced height */
   }
 }
+
   .parallax_bottom {
     display: flex;
     flex-direction: column;
