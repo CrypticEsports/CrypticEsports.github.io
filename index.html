@@ -194,33 +194,14 @@
     </header>
       <div class="parallax_top">
         <div class="video-wrapper">
-  <iframe
-    id="video"
-    src="https://www.youtube.com/embed/VIDEO_ID?autoplay=0&mute=1&loop=1&playlist=VIDEO_ID"
-    frameborder="0"
-    allow="autoplay; encrypted-media"
-    allowfullscreen
-    style="width: 100vw; height: 100vh; z-index: 0;"
-  ></iframe>
-</div>
-
-<script>
-  // Trigger autoplay with sound after user interaction (scroll or click)
-  var videoPlayed = false;
-
-  function playVideo() {
-    if (!videoPlayed) {
-      var iframe = document.getElementById('video');
-      // Change iframe src to enable autoplay with sound
-      iframe.src = iframe.src + '&autoplay=1&mute=0'; // Set autoplay and unmute
-      videoPlayed = true; // Prevent multiple triggers
-    }
-  }
-
-  // Listen for any user interaction (e.g., scroll or click) to trigger the video to play
-  window.addEventListener('scroll', playVideo, { once: true });
-  window.addEventListener('click', playVideo, { once: true });
-</script>
+  <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/ukMFZ9jxVuA?autoplay=1&mute=0&loop=1&playlist=ukMFZ9jxVuA&controls=0&showinfo=0&rel=0"
+            frameborder="0"
+            allow="autoplay; encrypted-media"
+            allowfullscreen>
+          </iframe>
+          </div>
           <img src="images/title.png" alt="Title Image" class="responsive">
       <section class="slider_section ">
               <div class="container ">
