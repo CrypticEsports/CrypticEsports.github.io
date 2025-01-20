@@ -1,8 +1,8 @@
 const vars = {
 
-  heading: `I dont <br> know`,
+  heading: ``,
 
-  subHeading: 'Fuck you',
+  subHeading: '',
   
   about: 'CR is a global team dedicated to innovation and excellence. We strive to stand out at the top, supporting players from every region to join us. With our own dedicated modding and creative teams, we foster a fun yet professional culture. We come together to create and play the best competitive matches the world has ever seen.',
   
