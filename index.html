@@ -56,44 +56,52 @@
     background-size: cover;
   }
 
-  .video-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: 0;
-    overflow: hidden;
-  }
+.video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  overflow: hidden;
+}
 
-  .video-wrapper::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Dimming effect */
-    z-index: 1;
-  }
+.video-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Dimming effect */
+  z-index: 1;
+}
 
+.video-wrapper iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 177.78vh; /* Default: 16:9 ratio based on height */
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Adjust for landscape mode where width exceeds height */
+@media (min-aspect-ratio: 16/9) {
   .video-wrapper iframe {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(1.2); /* Scales the video */
     width: 100vw;
-    height: 100vh;
-    pointer-events: none; /* Prevent interaction with the video */
-    z-index: 0;
+    height: 56.25vw; /* 16:9 ratio based on width */
   }
+}
 
-  .parallax_top .content {
-    position: relative;
-    z-index: 2; /* Ensures content appears above the video */
-    color: white;
-    text-align: center;
+/* Additional adjustment for very small screens */
+@media (max-width: 768px) {
+  .video-wrapper iframe {
+    transform: translate(-50%, -50%) scale(1.05); /* Slight scaling for small screens */
   }
+}
 
   .parallax_bottom {
     display: flex;
