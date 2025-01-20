@@ -159,6 +159,30 @@
     justify-content: center;
     width: 100%;
   }
+  #soundOverlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.5rem;
+      z-index: 2;
+    }
+
+    .close-overlay {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
 </style>
 
 </head>
@@ -202,6 +226,28 @@
           </iframe>
           </div>
           <img src="images/title.png" alt="Title Image" class="responsive">
+        <div id="soundOverlay">
+    <div>
+      <p>Please enable sound to enjoy the video!</p>
+      <button onclick="unmuteVideo()">Enable Sound</button>
+    </div>
+    <span class="close-overlay" onclick="closeOverlay()">×</span>
+  </div>
+        <script>
+    function unmuteVideo() {
+      var iframe = document.getElementById('video');
+      // Update the iframe src to enable sound
+      iframe.src = iframe.src.replace('&mute=1', '&mute=0');
+      closeOverlay();
+    }
+
+    function closeOverlay() {
+      document.getElementById('soundOverlay').style.display = 'none';
+    }
+  </script>
+
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="js/bootstrap.js"></script>
       <section class="slider_section ">
               <div class="container ">
                 <div class="row">
@@ -303,6 +349,7 @@
   <!-- Google Map -->
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap">
   </script>
+
   <!-- End Google Map -->
 
 </body>
