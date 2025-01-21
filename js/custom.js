@@ -10,7 +10,7 @@ const vars = {
   
   twitter: '',
   
-  inquiry: 'Feel free to join the discord and opening a ticket if you have any interest in joining or inquiring about Cryptic Esports'
+  inquiry: ''
 
 }
 
